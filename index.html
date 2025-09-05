@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🧠 Orgena Script - Stupidly Simple Advanced Guide</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fa;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: #0077cc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+      flex: 1;
+    }
+    .editor, .output {
+      flex: 1 1 400px;
+      display: flex;
+      flex-direction: column;
+    }
+    textarea {
+      width: 100%;
+      height: 300px;
+      font-family: monospace;
+      font-size: 14px;
+      padding: 10px;
+      border: 2px solid #0077cc;
+      border-radius: 6px;
+      resize: vertical;
+      background: #fff;
+      color: #222;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 10px;
+      padding: 12px;
+      font-weight: bold;
+      font-size: 16px;
+      background: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      user-select: none;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+    #output {
+      flex: 1;
+      background: #111;
+      color: #0f0;
+      padding: 15px;
+      border-radius: 6px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+    .guide {
+      max-width: 1000px;
+      margin: 20px auto 40px;
+      background: white;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      line-height: 1.5;
+    }
+    .guide h2 {
+      color: #0077cc;
+      margin-top: 1em;
+    }
+    .guide h3 {
+      margin-top: 1em;
+      color: #005fa3;
+    }
+    .example {
+      background: #e8f0ff;
+      border-left: 5px solid #0077cc;
+      padding: 10px 15px;
+      margin: 10px 0 20px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      color: #222;
+      user-select: text;
+    }
+    code {
+      background: #f0f0f0;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: monospace;
+      color: #c7254e;
+    }
+    #orgenaElements {
+      margin-top: 10px;
+    }
+    #promptInput {
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 2px solid #0077cc;
+      display: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    footer {
+      text-align: center;
+      padding: 10px 0;
+      color: #888;
+      font-size: 14px;
+      background: #f0f0f0;
+      border-top: 1px solid #ddd;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧠 Orgena Script Guide — Stupidly Simple & Advanced</h1>
+  <p>Write natural-like commands, manipulate the DOM, create interactivity!</p>
+</header>
+
+<main>
+  <section class="editor">
+    <h2>📝 Write Your Orgena Code Here</h2>
+    <textarea id="code">
+// Try this example:
+
+Say "Hello, world!"
+Remember name is "Alex"
+Say name
+
+Create Element button as myBtn
+Set text of myBtn to "Click me!"
+Add myBtn to page
+
+On click of myBtn, run
+  Say "You clicked the button!"
+end
+
+// Or try more from the guide below!
+    </textarea>
+    <button id="runBtn">▶️ Run Code</button>
+    <input type="text" id="promptInput" placeholder="Enter your input here..." />
+    <div id="orgenaElements"></div>
+  </section>
+
+  <section class="output">
+    <h2>🖨️ Output Console</h2>
+    <div id="output">(Output will appear here)</div>
+  </section>
+</main>
+
+<section class="guide">
+  <h2>🧭 Orgena Script Guide</h2>
+
+  <h3>🔤 Saying Things</h3>
+  <div class="example">
+Say "Hello!"<br>
+➤ Prints "Hello!" to the output console.
+  </div>
+
+  <h3>📦 Variables</h3>
+  <div class="example">
+Remember age is 25<br>
+Say age<br>
+➤ Saves and displays variables.
+  </div>
+
+  <h3>🔁 Loops</h3>
+  <div class="example">
+Remember n is 0<br>
+Repeat while n is less than 3,<br>
+  Say n<br>
+  n is n plus 1<br>
+end
+  </div>
+
+  <h3>🧠 Conditions</h3>
+  <div class="example">
+If age is greater than 18, Say "Adult" else Say "Minor"
+  </div>
+
+  <h3>📚 Lists</h3>
+  <div class="example">
+Remember items is<br>
+Add "apple" to items<br>
+Add "banana" to items<br>
+Show items
+  </div>
+
+  <h3>🧮 Math</h3>
+  <div class="example">
+Remember result is 5 plus 3<br>
+Say result<br>
+Supports <code>plus</code>, <code>minus</code>, <code>times</code>, <code>divided by</code>, <code>mod</code>.
+  </div>
+
+  <h3>🌐 HTML Elements</h3>
+  <div class="example">
+Create Element div as box<br>
+Set text of box to "I'm a box!"<br>
+Set style of box to "color: red;"<br>
+Add box to page
+  </div>
+
+  <h3>🎯 Event Handling</h3>
+  <div class="example">
+On click of box, run<br>
+  Say "Clicked!"<br>
+end
+  </div>
+
+  <h3>🧙‍♂️ Functions</h3>
+  <div class="example">
+Define greet with name,<br>
+  Say "Hello, " plus name<br>
+end<br>
+Call greet with "Sam"
+  </div>
+
+  <h3>🙋 Input</h3>
+  <div class="example">
+Ask for username<br>
+Say username
+  </div>
+
+</section>
+
+<footer>
+  Created by ChatGPT &nbsp;|&nbsp; Have fun coding!
+</footer>
+
+<script>
+(() => {
+  // --- Orgena Script Interpreter v1.0 ---
+  // Written by ChatGPT for you. All in one file.
+  // Natural language style scripting with DOM manipulation.
+
+  // State
+  const variables = {};
+  const lists = {};
+  const functions = {};
+  const elements = {};
+  let outputElement, orgenaElementsDiv, promptInput;
+
+  let waitingForInput = false;
+  let inputResolve = null;
+
+  // Helper utilities
+  function print(text) {
+    if (text === undefined || text === null) text = '';
+    outputElement.textContent += text + '\n';
+    outputElement.scrollTop = outputElement.scrollHeight;
+  }
+
+  function clearOutput() {
+    outputElement.textContent = '';
+  }
+
+  // Parse value which can be:
+  // - string in quotes: "hello"
+  // - variable name
+  // - number
+  // - expression like: 5 plus 3
+  // returns JS value (number or string)
+  function parseValue(str) {
+    str = str.trim();
+
+    // If string literal with quotes
+    if (/^".*"$/.test(str)) {
+      return str.slice(1, -1);
+    }
+
+    // If list literal e.g. [1, 2, 3]
+    if (/^\[.*\]$/.test(str)) {
+      try {
+        return JSON.parse(str.replace(/'/g, '"'));
+      } catch {
+        return [];
+      }
+    }
+
+    // If a number
+    if (!isNaN(Number(str))) {
+      return Number(str);
+    }
+
+    // If a variable
+    if (variables.hasOwnProperty(str)) return variables[str];
+
+    // If a list
+    if (lists.hasOwnProperty(str)) return lists[str];
+
+    // Try to evaluate expressions with plus, minus, etc
+    return evalExpression(str);
+  }
+
+  // Evaluate basic math expressions: supports plus, minus, times, divided by, mod
+  // For example: "5 plus 3 times 2" = 11
+  function evalExpression(expr) {
+    // Replace words with operators
+    expr = expr
+      .replace(/\bplus\b/g, '+')
+      .replace(/\bminus\b/g, '-')
+      .replace(/\btimes\b/g, '*')
+      .replace(/\bdivided by\b/g, '/')
+      .replace(/\bmod\b/g, '%');
+
+    // Replace variables with their values
+    expr = expr.replace(/\b([a-zA-Z_][a-zA-Z0-9_]*)\b/g, (match) => {
+      if (variables.hasOwnProperty(match)) return variables[match];
+      if (lists.hasOwnProperty(match)) return lists[match];
+      return match;
+    });
+
+    try {
+      // eslint-disable-next-line no-eval
+      let result = eval(expr);
+      if (typeof result === 'number' && !isNaN(result)) return result;
+      return expr;
+    } catch {
+      return expr;
+    }
+  }
+
+  // Parse condition like "age is greater than 18"
+  // Returns true/false
+  function evalCondition(cond) {
+    // Support simple conditions:
+    // X is Y
+    // X is not Y
+    // X is greater than Y
+    // X is less than Y
+    // X is greater or equal to Y
+    // X is less or equal to Y
+    // X contains Y (for lists and strings)
+
+    let m;
+
+    if (m = cond.match(/^(.+) is not (.+)$/)) {
+      const left = parseValue(m[1]);
+      const right = parseValue(m[2]);
+      return left != right;
+    }
+    if (m = cond.match(/^(.+) is greater or equal to (.+)$/)) {
+      const left = parseValue(m[1]);
+      const right = parseValue(m[2]);
+      return left >= right;
+    }
+    if (m = cond.match(/^(.+) is less or equal to (.+)$/)) {
+      const left = parseValue(m[1]);
+      const right = parseValue(m[2]);
+      return left <= right;
+    }
+    if (m = cond.match(/^(.+) is greater than (.+)$/)) {
+      const left = parseValue(m[1]);
+      const right = parseValue(m[2]);
+      return left > right;
+    }
+    if (m = cond.match(/^(.+) is less than (.+)$/)) {
+      const left = parseValue(m[1]);
+      const right = parseValue(m[2]);
+      return left < right;
+    }
+    if (m = cond.match(/^(.+) is (.+)$/)) {
+      const left = parseValue(m[1]);
+      const right = parseValue(m[2]);
+      return left == right;
+    }
+    if (m = cond.match(/^(.+) contains (.+)$/)) {
+      const left = parseValue(m[1]);
+      const right = parseValue(m[2]);
+      if (typeof left === 'string') return left.includes(right);
+      if (Array.isArray(left)) return left.includes(right);
+      return false;
+    }
+    return false;
+  }
+
+  // Split parameters separated by commas, but ignore commas inside quotes
+  function splitParams(str) {
+    const params = [];
+    let current = '';
+    let insideQuotes = false;
+    for (let c of str) {
+      if (c === '"') insideQuotes = !insideQuotes;
+      if (c === ',' && !insideQuotes) {
+        params.push(current.trim());
+        current = '';
+      } else {
+        current += c;
+      }
+    }
+    if (current.trim() !== '') params.push(current.trim());
+    return params;
+  }
+
+  // Main interpreter
+  async function runOrgena(code) {
+    clearOutput();
+    orgenaElementsDiv.innerHTML = '';
+    for (const k in elements) {
+      try {
+        if (elements[k].parentNode) elements[k].parentNode.removeChild(elements[k]);
+      } catch {}
+    }
+    Object.keys(elements).forEach(k => delete elements[k]);
+
+    waitingForInput = false;
+    inputResolve = null;
+
+    const lines = code.split('\n').map(l => l.trim()).filter(l => l.length > 0 && !l.startsWith('//'));
+
+    // Execution stack to handle multi-line blocks (On click, Repeat, If, Define)
+    const stack = [];
+    // Current context for variables/functions
+    let currentFunction = null;
+
+    async function execLines(lines, startIdx = 0, stopAtEnd = true) {
+      for (let i = startIdx; i < lines.length; i++) {
+        let line = lines[i];
+
+        // Handle block ends
+        if (/^end$/i.test(line)) {
+          if (stack.length === 0) {
+            // Unexpected end
+            print('Error: Unexpected end');
+            return i;
+          }
+          stack.pop();
+          if (stopAtEnd) return i;
+          continue;
+        }
+
+        // Handle Define function
+        if (/^Define\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*(with\s*([^,]+(?:,\s*[^,]+)*)?)?[,]?$/i.test(line)) {
+          const defMatch = line.match(/^Define\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*(with\s*([^,]+(?:,\s*[^,]+)*)?)?[,]?$/i);
+          const funcName = defMatch[1];
+          const paramsRaw = defMatch[3] || '';
+          const params = paramsRaw.split(',').map(p => p.trim()).filter(p => p.length > 0);
+          // Gather function lines until end
+          const funcLines = [];
+          stack.push('function');
+          i++;
+          while (i < lines.length && !/^end$/i.test(lines[i])) {
+            funcLines.push(lines[i]);
+            i++;
+          }
+          if (i === lines.length) {
+            print('Error: Missing end for function ' + funcName);
+            return i;
+          }
+          functions[funcName] = { params, code: funcLines };
+          stack.pop();
+          continue;
+        }
+
+        // Call function
+        if (/^Call\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*(with\s*(.+))?$/i.test(line)) {
+          const callMatch = line.match(/^Call\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*(with\s*(.+))?$/i);
+          const funcName = callMatch[1];
+          if (!functions[funcName]) {
+            print(`Error: Function "${funcName}" not defined`);
+            continue;
+          }
+          const argsRaw = callMatch[3] || '';
+          const args = splitParams(argsRaw).map(parseValue);
+          const func = functions[funcName];
+          if (args.length !== func.params.length) {
+            print(`Error: Function "${funcName}" expects ${func.params.length} arguments, got ${args.length}`);
+            continue;
+          }
+          // Save old variables
+          const oldVars = {};
+          func.params.forEach((p,i) => {
+            if (variables.hasOwnProperty(p)) oldVars[p] = variables[p];
+            variables[p] = args[i];
+          });
+          // Run function code
+          await execLines(func.code, 0, false);
+          // Restore variables
+          func.params.forEach(p => {
+            if (oldVars.hasOwnProperty(p)) variables[p] = oldVars[p];
+            else delete variables[p];
+          });
+          continue;
+        }
+
+        // Ask for input
+        if (/^Ask for (.+)$/i.test(line)) {
+          const askMatch = line.match(/^Ask for (.+)$/i);
+          const varName = askMatch[1].trim();
+          print(`Waiting for input for "${varName}"...`);
+          const val = await askUserInput();
+          variables[varName] = val;
+          print(`${varName} = ${val}`);
+          continue;
+        }
+
+        // Say command
+        if (/^Say (.+)$/i.test(line)) {
+          const sayMatch = line.match(/^Say (.+)$/i);
+          const val = parseValue(sayMatch[1]);
+          print(val);
+          continue;
+        }
+
+        // Remember command
+        if (/^Remember ([a-zA-Z_][a-zA-Z0-9_]*) is (.+)$/i.test(line)) {
+          const remMatch = line.match(/^Remember ([a-zA-Z_][a-zA-Z0-9_]*) is (.+)$/i);
+          const varName = remMatch[1];
+          const val = parseValue(remMatch[2]);
+          if (Array.isArray(val)) {
+            lists[varName] = val;
+          } else {
+            variables[varName] = val;
+          }
+          continue;
+        }
+
+        // Add to list
+        if (/^Add (.+) to ([a-zA-Z_][a-zA-Z0-9_]*)$/i.test(line)) {
+          const addMatch = line.match(/^Add (.+) to ([a-zA-Z_][a-zA-Z0-9_]*)$/i);
+          const val = parseValue(addMatch[1]);
+          const listName = addMatch[2];
+          if (!lists[listName]) lists[listName] = [];
+          lists[listName].push(val);
+          continue;
+        }
+
+        // Show list
+        if (/^Show ([a-zA-Z_][a-zA-Z0-9_]*)$/i.test(line)) {
+          const showMatch = line.match(/^Show ([a-zA-Z_][a-zA-Z0-9_]*)$/i);
+          const listName = showMatch[1];
+          if (lists[listName]) {
+            print(JSON.stringify(lists[listName]));
+          } else {
+            print('Error: List "'+listName+'" not found');
+          }
+          continue;
+        }
+
+        // Create Element
+        if (/^Create Element ([a-zA-Z0-9]+)( as ([a-zA-Z_][a-zA-Z0-9_]*))?$/i.test(line)) {
+          const createMatch = line.match(/^Create Element ([a-zA-Z0-9]+)( as ([a-zA-Z_][a-zA-Z0-9_]*))?$/i);
+          const tag = createMatch[1];
+          const name = createMatch[3] || `elem_${Object.keys(elements).length + 1}`;
+          if (elements[name]) {
+            print(`Error: Element with name "${name}" already exists`);
+            continue;
+          }
+          const el = document.createElement(tag);
+          elements[name] = el;
+          continue;
+        }
+
+        // Set text of element
+        if (/^Set text of ([a-zA-Z_][a-zA-Z0-9_]*) to (.+)$/i.test(line)) {
+          const setTextMatch = line.match(/^Set text of ([a-zA-Z_][a-zA-Z0-9_]*) to (.+)$/i);
+          const name = setTextMatch[1];
+          const val = parseValue(setTextMatch[2]);
+          if (!elements[name]) {
+            print(`Error: Element "${name}" not found`);
+            continue;
+          }
+          elements[name].textContent = val;
+          continue;
+        }
+
+        // Set style of element
+        if (/^Set style of ([a-zA-Z_][a-zA-Z0-9_]*) to (.+)$/i.test(line)) {
+          const setStyleMatch = line.match(/^Set style of ([a-zA-Z_][a-zA-Z0-9_]*) to (.+)$/i);
+          const name = setStyleMatch[1];
+          const val = parseValue(setStyleMatch[2]);
+          if (!elements[name]) {
+            print(`Error: Element "${name}" not found`);
+            continue;
+          }
+          elements[name].style.cssText = val;
+          continue;
+        }
+
+        // Add element to page (append to orgenaElementsDiv)
+        if (/^Add ([a-zA-Z_][a-zA-Z0-9_]*) to page$/i.test(line)) {
+          const addToPageMatch = line.match(/^Add ([a-zA-Z_][a-zA-Z0-9_]*) to page$/i);
+          const name = addToPageMatch[1];
+          if (!elements[name]) {
+            print(`Error: Element "${name}" not found`);
+            continue;
+          }
+          orgenaElementsDiv.appendChild(elements[name]);
+          continue;
+        }
+
+        // On event handler: "On click of myBtn, run ..."
+        if (/^On ([a-zA-Z]+) of ([a-zA-Z_][a-zA-Z0-9_]*), run$/i.test(line)) {
+          const eventMatch = line.match(/^On ([a-zA-Z]+) of ([a-zA-Z_][a-zA-Z0-9_]*), run$/i);
+          const eventName = eventMatch[1];
+          const elemName = eventMatch[2];
+
+          if (!elements[elemName]) {
+            print(`Error: Element "${elemName}" not found for event handler`);
+            continue;
+          }
+
+          // Get block of lines inside event handler
+          const eventLines = [];
+          i++;
+          stack.push('event');
+          while (i < lines.length && !/^end$/i.test(lines[i])) {
+            eventLines.push(lines[i]);
+            i++;
+          }
+          if (i === lines.length) {
+            print('Error: Missing end for event handler on '+elemName);
+            return i;
+          }
+          stack.pop();
+
+          // Attach event listener
+          elements[elemName].addEventListener(eventName, async () => {
+            await execLines(eventLines, 0, false);
+          });
+          continue;
+        }
+
+        // If condition line: "If age is greater than 18, Say 'Adult' else Say 'Minor'"
+        if (/^If (.+), (.+)$/i.test(line)) {
+          // Complex if-else on one line
+          const ifMatch = line.match(/^If (.+), (.+)$/i);
+          const condition = ifMatch[1];
+          const rest = ifMatch[2];
+          // Split on else
+          const parts = rest.split(/\belse\b/i);
+          const thenPart = parts[0].trim();
+          const elsePart = parts[1] ? parts[1].trim() : null;
+
+          if (evalCondition(condition)) {
+            await execLines([thenPart], 0, false);
+          } else if (elsePart) {
+            await execLines([elsePart], 0, false);
+          }
+          continue;
+        }
+
+        // Multi-line If block: "If condition," then lines, then optional "else," lines, then end
+        if (/^If (.+),$/i.test(line)) {
+          const ifCondMatch = line.match(/^If (.+),$/i);
+          const condition = ifCondMatch[1];
+
+          // Gather then block lines until else or end
+          const thenLines = [];
+          const elseLines = [];
+          let inElse = false;
+          i++;
+          while (i < lines.length && !/^end$/i.test(lines[i])) {
+            if (/^else,?$/i.test(lines[i])) {
+              inElse = true;
+              i++;
+              continue;
+            }
+            if (!inElse) thenLines.push(lines[i]);
+            else elseLines.push(lines[i]);
+            i++;
+          }
+          if (i === lines.length) {
+            print('Error: Missing end for If block');
+            return i;
+          }
+          if (evalCondition(condition)) {
+            await execLines(thenLines, 0, false);
+          } else {
+            await execLines(elseLines, 0, false);
+          }
+          continue;
+        }
+
+        // Repeat while loop: "Repeat while n is less than 3,"
+        if (/^Repeat while (.+),$/i.test(line)) {
+          const repMatch = line.match(/^Repeat while (.+),$/i);
+          const condition = repMatch[1];
+
+          // Gather block lines until end
+          const blockLines = [];
+          i++;
+          stack.push('repeat');
+          while (i < lines.length && !/^end$/i.test(lines[i])) {
+            blockLines.push(lines[i]);
+            i++;
+          }
+          if (i === lines.length) {
+            print('Error: Missing end for Repeat block');
+            return i;
+          }
+          stack.pop();
+
+          // Repeat until condition false
+          while (evalCondition(condition)) {
+            await execLines(blockLines, 0, false);
+          }
+          continue;
+        }
+
+        // Repeat N times: "Repeat 3 times,"
+        if (/^Repeat (\d+) times,$/i.test(line)) {
+          const repMatch = line.match(/^Repeat (\d+) times,$/i);
+          const times = Number(repMatch[1]);
+          // Gather block lines until end
+          const blockLines = [];
+          i++;
+          stack.push('repeat');
+          while (i < lines.length && !/^end$/i.test(lines[i])) {
+            blockLines.push(lines[i]);
+            i++;
+          }
+          if (i === lines.length) {
+            print('Error: Missing end for Repeat block');
+            return i;
+          }
+          stack.pop();
+
+          for (let c = 0; c < times; c++) {
+            await execLines(blockLines, 0, false);
+          }
+          continue;
+        }
+
+        // Variable increment: "n is n plus 1"
+        if (/^([a-zA-Z_][a-zA-Z0-9_]*) is (.+)$/i.test(line)) {
+          const assignMatch = line.match(/^([a-zA-Z_][a-zA-Z0-9_]*) is (.+)$/i);
+          const varName = assignMatch[1];
+          const val = parseValue(assignMatch[2]);
+          variables[varName] = val;
+          continue;
+        }
+
+        print('Error: Unknown command: "' + line + '"');
+      }
+      return lines.length;
+    }
+
+    await execLines(lines, 0, true);
+  }
+
+  // Ask user for input with a prompt and return a Promise that resolves with the input string
+  function askUserInput() {
+    waitingForInput = true;
+    promptInput.style.display = 'block';
+    promptInput.value = '';
+    promptInput.focus();
+
+    return new Promise((resolve) => {
+      inputResolve = resolve;
+    });
+  }
+
+  // On pressing enter in prompt input, resolve waiting promise
+  function handleInputEnter(e) {
+    if (e.key === 'Enter' && waitingForInput) {
+      e.preventDefault();
+      const val = promptInput.value.trim();
+      promptInput.style.display = 'none';
+      waitingForInput = false;
+      if (inputResolve) {
+        inputResolve(val);
+        inputResolve = null;
+      }
+    }
+  }
+
+  // Init
+  window.onload = () => {
+    outputElement = document.getElementById('output');
+    orgenaElementsDiv = document.getElementById('orgenaElements');
+    promptInput = document.getElementById('promptInput');
+    promptInput.addEventListener('keydown', handleInputEnter);
+
+    document.getElementById('runBtn').addEventListener('click', async () => {
+      const code = document.getElementById('code').value;
+      await runOrgena(code);
+    });
+  };
+})();
+</script>
+
+</body>
+</html>
